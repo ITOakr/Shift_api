@@ -4,6 +4,7 @@ setup:
 	docker-compose build
 	docker-compose run --rm web bundle install
 	docker-compose run --rm web bundle exec rails db:create db:migrate
+	docker-compose run --rm web bundle exec rails generate rspec:install
 
 up:
 	docker-compose up
