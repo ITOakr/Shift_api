@@ -8,7 +8,7 @@ ruby "3.2.2"
 gem "rails", "~> 8.0.2"
 
 # Use sqlite3 as the database for Active Record in development
-gem "sqlite3", "~> 1.4"
+# gem "sqlite3", "~> 1.4"
 
 # Use postgresql as the database for Active Record in production
 gem "pg", "~> 1.1"
@@ -24,6 +24,9 @@ gem "redis", ">= 4.0.1"
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax requests possible
 gem "rack-cors"
+
+gem 'devise'
+gem 'devise_token_auth'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
