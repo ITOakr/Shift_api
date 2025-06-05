@@ -13,13 +13,19 @@
 # gem "pg"
 #
 default: &default
-  adapter: sqlite3
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
+  adapter: postgresql            # PostgreSQL ドライバを指定
+  encoding: unicode              # 文字エンコーディング
+  host: localhost                # ローカルの PG サーバー
+  username: <%= ENV['PG_USERNAME'] || 'itoakira' %>
+                                 # Mac のログインユーザー名か、
+                                 # 環境変数 PG_USERNAME を使う
+  password: <%= ENV['PG_PASSWORD'] || '' %>
+                                 # 環境変数 PG_PASSWORD か空文字
+  pool: 5                        # コネクションプールの最大数
 
 development:
-  <<: *default
-  database: db/development.sqlite3
+  <<: *default                   # 上の default 定義を継承
+  database: shift_api_development   # 開発用 DB 名
 
 # The specified database role being used to connect to PostgreSQL.
 # To create additional roles in PostgreSQL see `$ createuser --help`.
@@ -53,7 +59,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: shift_api_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
